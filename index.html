@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<title>Indsamlingsformular</title>
+<style>
+  body { font-family: Arial; max-width: 900px; margin: 30px auto; }
+  input, button { padding:8px; margin-top:6px; }
+  .primary { background:#1f6feb; color:white; border:none; }
+  .addBtn { background:#2b8a3e; color:white; border:none; }
+  .removeBtn { background:#ff6b6b; color:white; border:none; }
+  .darisBox { border:1px solid #ddd; border-radius:6px; margin-top:10px; background:#fff; }
+  .darisHeader { padding:10px; background:#f5f5f5; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+  .darisContent { padding:10px; display:none; }
+  .guestRow { display:flex; gap:6px; margin-top:6px; }
+  .reasonBox { margin-top:10px; background:#fafafa; padding:8px; border-radius:6px; }
+  .toggleIcon { font-weight:bold; }
+</style>
+</head>
+<body>
+
+<h2>Indsamling</h2>
+
+<form id="form">
+  <label>Mushrif navn</label><br>
+  <input type="text" id="mushrif" required style="width:100%"><br><br>
+
+  <div id="darisList"></div>
+
+  <button type="button" id="addDaris" class="addBtn">+ Tilføj daris</button>
+  <button type="submit" class="primary">Send</button>
+</form>
+
+<script>
+const darisList = document.getElementById("darisList");
+const addDarisBtn = document.getElementById("addDaris");
+
+function addDaris() {
+
+  const box = document.createElement("div");
+  box.className = "darisBox";
+
+  const header = document.createElement("div");
+  header.className = "darisHeader";
+
+  const title = document.createElement("span");
+  title.textContent = "Ny daris";
+
+  const toggle = document.createElement("span");
+  toggle.className = "toggleIcon";
+  toggle.textContent = "▶";
+
+  header.appendChild(title);
+  header.appendChild(toggle);
+
+  const content = document.createElement("div");
+  content.className = "darisContent";
+
+  // Daris navn
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "Daris navn";
+  nameInput.style.width = "100%";
+
+  nameInput.addEventListener("input", () => {
+    title.textContent = nameInput.value || "Ny daris";
+  });
+
+  // Iftar antal
+  const iftarInput = document.createElement("input");
+  iftarInput.type = "number";
+  iftarInput.min = "0";
+  iftarInput.placeholder = "Hvor mange iftarat?";
+  iftarInput.style.width = "100%";
+
+  // Reason box
+  const reasonBox = document.createElement("div");
+  reasonBox.className = "reasonBox";
+  reasonBox.style.display = "none";
+
+  reasonBox.innerHTML = `
+    <label><input type="checkbox" value="manglende økonomi"> Manglende økonomi</label><br>
+    <label><input type="checkbox" value="umodne"> Umodne</label><br>
+    <label><input type="checkbox" value="social udfordret"> Social udfordret</label><br>
+    <label>Andet: <input type="text" id="andetReason"></label>
+  `;
+
+  iftarInput.addEventListener("input", () => {
+    if (parseInt(iftarInput.value) === 0) {
+      reasonBox.style.display = "block";
+    } else {
+      reasonBox.style.display = "none";
+    }
+  });
+
+  // Guests
+  const guestContainer = document.createElement("div");
+
+  const addGuestBtn = document.createElement("button");
+  addGuestBtn.type = "button";
+  addGuestBtn.textContent = "+ Tilføj gæst";
+
+  addGuestBtn.addEventListener("click", () => {
+    const guestRow = document.createElement("div");
+    guestRow.className = "guestRow";
+
+    const guestInput = document.createElement("input");
+    guestInput.type = "text";
+    guestInput.placeholder = "Gæst navn";
+    guestInput.style.flex = "1";
+
+    const removeGuest = document.createElement("button");
+    removeGuest.type = "button";
+    removeGuest.textContent = "Fjern";
+    removeGuest.className = "removeBtn";
+
+    removeGuest.addEventListener("click", () => guestRow.remove());
+
+    guestRow.appendChild(guestInput);
+    guestRow.appendChild(removeGuest);
+    guestContainer.appendChild(guestRow);
+  });
+
+  // Remove daris
+  const removeDaris = document.createElement("button");
+  removeDaris.type = "button";
+  removeDaris.textContent = "Fjern daris";
+  removeDaris.className = "removeBtn";
+
+  removeDaris.addEventListener("click", () => box.remove());
+
+  content.appendChild(nameInput);
+  content.appendChild(iftarInput);
+  content.appendChild(reasonBox);
+  content.appendChild(addGuestBtn);
+  content.appendChild(guestContainer);
+  content.appendChild(removeDaris);
+
+  // Toggle logic
+  header.addEventListener("click", () => {
+    if (content.style.display === "none") {
+      content.style.display = "block";
+      toggle.textContent = "▼";
+    } else {
+      content.style.display = "none";
+      toggle.textContent = "▶";
+    }
+  });
+
+  box.appendChild(header);
+  box.appendChild(content);
+  darisList.appendChild(box);
+}
+
+addDarisBtn.addEventListener("click", addDaris);
+
+// Start med én daris
+addDaris();
+</script>
+
+</body>
+</html>
