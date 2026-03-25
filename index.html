@@ -42,7 +42,7 @@
     /* Kort / panel-stil */
     .form-card {
       background: #ffffff;
-      border-radius: 28px;
+      border-radius: 32px;
       box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.02);
       padding: 1.8rem 2rem;
       transition: box-shadow 0.2s;
@@ -79,7 +79,7 @@
 
     /* form labels & inputs */
     .field-group {
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     label {
@@ -97,7 +97,7 @@
       font-family: inherit;
       font-size: 1rem;
       padding: 12px 14px;
-      border-radius: 16px;
+      border-radius: 20px;
       border: 1.5px solid #e2e8f0;
       background: #fff;
       transition: all 0.2s ease;
@@ -112,105 +112,167 @@
       box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.2);
     }
 
-    /* knapunivers */
+    /* knapunivers – kreative gradients og placering */
     button {
       font-family: inherit;
       font-weight: 600;
-      padding: 10px 18px;
-      border-radius: 40px;
+      padding: 12px 24px;
+      border-radius: 60px;
       border: none;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease;
       font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 10px;
       background: #f1f5f9;
       color: #1e293b;
       border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
     }
 
     button:hover {
-      transform: translateY(-1px);
-      filter: brightness(0.97);
+      transform: translateY(-2px);
+      filter: brightness(0.98);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
     }
 
     button:active {
       transform: translateY(1px);
     }
 
+    /* Primær knap (send) */
     .primary {
-      background: #1f6feb;
+      background: linear-gradient(105deg, #1f6feb 0%, #3b82f6 100%);
       color: white;
       border: none;
-      box-shadow: 0 4px 8px rgba(31, 111, 235, 0.2);
+      box-shadow: 0 4px 12px rgba(31, 111, 235, 0.3);
     }
 
     .primary:hover {
-      background: #0f5fd9;
-      transform: translateY(-1px);
+      background: linear-gradient(105deg, #0f5fd9 0%, #2563eb 100%);
     }
 
+    /* Tilføj-knap – fælles stil for daris og gæst */
     .addBtn {
-      background: #2b8a3e;
+      background: linear-gradient(105deg, #2b8a3e 0%, #40c057 100%);
       color: white;
       border: none;
-      box-shadow: 0 2px 6px rgba(43, 138, 62, 0.2);
+      box-shadow: 0 4px 10px rgba(43, 138, 62, 0.3);
+      font-weight: 600;
     }
 
     .addBtn:hover {
-      background: #1e7a34;
+      background: linear-gradient(105deg, #1e7a34 0%, #2f9e44 100%);
     }
 
+    /* Fjern-knap – rød gradient */
     .removeBtn {
-      background: #fff0f0;
-      color: #c2410c;
-      border: 1px solid #ffd9d9;
+      background: linear-gradient(105deg, #f97316 0%, #ef4444 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
     }
 
     .removeBtn:hover {
-      background: #ffe0e0;
-      color: #9b2c1d;
-      border-color: #ffb3b3;
+      background: linear-gradient(105deg, #ea580c 0%, #dc2626 100%);
     }
 
+    /* Download knap */
     .download {
-      background: #6b5cff;
+      background: linear-gradient(105deg, #6b5cff 0%, #8b5cf6 100%);
       color: white;
       border: none;
     }
 
     .download:hover {
-      background: #5a4ce0;
+      background: linear-gradient(105deg, #5a4ce0 0%, #7c3aed 100%);
     }
 
+    /* Controls container – nederste handlinger */
     .controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-      padding-top: 8px;
-      border-top: 1px solid #eef2f6;
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 2px dashed #e2e8f0;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    /* DARIS bokse – kort med interaktivt header */
+    .controls .left-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .controls .right-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 680px) {
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .controls .left-group,
+      .controls .right-group {
+        justify-content: center;
+      }
+    }
+
+    /* Daris overskrift */
+    .daris-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin: 24px 0 12px 0;
+    }
+
+    .daris-section-header h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Knap til at tilføje daris – placeret nederst i sektionen */
+    .add-daris-bottom {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .add-daris-bottom button {
+      background: linear-gradient(105deg, #2b8a3e, #40c057);
+      padding: 12px 28px;
+    }
+
+    /* DARIS bokse */
     .darisBox {
       background: #ffffff;
-      border-radius: 24px;
-      margin-top: 20px;
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      margin-top: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       border: 1px solid #eef2f8;
       transition: all 0.2s;
     }
 
     .darisHeader {
-      padding: 16px 20px;
+      padding: 18px 24px;
       background: #fafcff;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-radius: 24px 24px 0 0;
+      border-radius: 28px 28px 0 0;
       transition: background 0.2s;
       font-weight: 500;
     }
@@ -221,10 +283,10 @@
 
     .darisTitle {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: baseline;
       flex-wrap: wrap;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
 
     .darisTitle span:first-child {
@@ -236,35 +298,35 @@
       font-weight: 700;
       color: #0f172a;
       background: #eef2ff;
-      padding: 2px 12px;
+      padding: 4px 14px;
       border-radius: 40px;
       font-size: 0.85rem;
     }
 
     .toggleIcon {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #5b6e8c;
     }
 
     .darisContent {
-      padding: 20px;
+      padding: 24px;
       border-top: 1px solid #ecf3fa;
       background: #ffffff;
-      border-radius: 0 0 24px 24px;
+      border-radius: 0 0 28px 28px;
     }
 
     /* rækker */
     .row {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       align-items: flex-start;
       flex-wrap: wrap;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .row label {
-      min-width: 130px;
+      min-width: 140px;
       margin-bottom: 0;
     }
 
@@ -273,42 +335,45 @@
       flex: 1;
     }
 
-    /* gæstebokse */
+    /* gæstebokse – med tydelig besked om én gæst */
     .guestRow {
-      background: #f9fafc;
-      border-radius: 20px;
-      padding: 18px;
-      margin-top: 14px;
-      border: 1px solid #eef2f8;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      margin-top: 16px;
+      border: 1px solid #e2edf7;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
       transition: all 0.1s;
     }
 
     .guestTop {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     .guestTop label {
       margin-bottom: 0;
+      font-weight: 600;
     }
 
     .guestTop input {
       flex: 2;
-      min-width: 160px;
+      min-width: 200px;
     }
 
-    .guestControls {
+    .guest-controls {
       display: flex;
-      gap: 8px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btnStatus {
       background: #f1f5f9;
       border: 1px solid #cbd5e1;
-      padding: 8px 14px;
+      padding: 10px 20px;
       border-radius: 40px;
       font-weight: 500;
       transition: 0.1s;
@@ -321,16 +386,25 @@
       box-shadow: 0 2px 6px rgba(31, 111, 235, 0.2);
     }
 
+    .guest-name-hint {
+      font-size: 0.75rem;
+      color: #6c86a3;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     .detailRow {
-      margin: 12px 0 0 0;
+      margin: 16px 0 0 0;
       width: 100%;
     }
 
     .topicBox {
       background: #ffffff;
-      border-radius: 20px;
-      padding: 12px 14px;
-      margin: 12px 0;
+      border-radius: 24px;
+      padding: 16px;
+      margin: 16px 0;
       border: 1px solid #e9edf2;
     }
 
@@ -339,33 +413,33 @@
       align-items: center;
       gap: 8px;
       background: #f8fafc;
-      padding: 4px 12px;
+      padding: 6px 14px;
       border-radius: 40px;
-      margin: 4px 8px 4px 0;
+      margin: 6px 10px 6px 0;
     }
 
     .reasonBox {
       background: #fff8e7;
-      border-left: 5px solid #f5a623;
-      padding: 14px 16px;
-      border-radius: 20px;
-      margin: 12px 0;
+      border-left: 6px solid #f5a623;
+      padding: 16px 20px;
+      border-radius: 24px;
+      margin: 16px 0;
     }
 
     .reasonBox label {
       display: inline-block;
-      margin-right: 20px;
-      margin-bottom: 6px;
+      margin-right: 24px;
+      margin-bottom: 8px;
       font-weight: 500;
     }
 
     /* indsamlede svar */
     .entry {
       background: #ffffff;
-      border-radius: 24px;
-      padding: 18px 20px;
-      margin-top: 16px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+      border-radius: 28px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
       border: 1px solid #eef2fa;
     }
 
@@ -377,25 +451,7 @@
     .error {
       outline: 2px solid #ff8a7a;
       background-color: #fff6f5;
-      border-radius: 14px;
-    }
-
-    /* hjælpetekster */
-    .helper-hint {
-      font-size: 0.8rem;
-      color: #54708f;
-      margin-top: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .badge {
-      background: #eef2ff;
-      padding: 2px 10px;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 500;
+      border-radius: 20px;
     }
 
     @media (max-width: 680px) {
@@ -403,14 +459,9 @@
         padding: 1.2rem;
       }
 
-      .controls button {
-        width: 100%;
-        justify-content: center;
-      }
-
       .row {
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
       }
 
       .guestTop {
@@ -421,6 +472,19 @@
       .inline {
         display: flex;
         width: 100%;
+      }
+
+      .guest-controls {
+        justify-content: space-between;
+      }
+
+      .daris-section-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .add-daris-bottom {
+        text-align: center;
       }
     }
   </style>
@@ -438,13 +502,25 @@
           <input id="mushrif" type="text" placeholder="Skriv mushrif-navn her" required>
         </div>
 
+        <!-- Daris sektion med overskrift -->
+        <div class="daris-section-header">
+          <h3>👥 Daris-liste <span class="smallGray">(klik på boks for at udfolde)</span></h3>
+        </div>
         <div id="darisList"></div>
 
-        <div class="controls">
+        <!-- Tilføj daris knap – placeret nederst i Daris-sektionen -->
+        <div class="add-daris-bottom">
           <button type="button" id="addDaris" class="addBtn">➕ Tilføj daris</button>
-          <button type="submit" class="primary">📨 Send indberetning</button>
-          <button type="button" id="clearAll" class="removeBtn">🗑️ Ryd lokal gem</button>
-          <button type="button" id="downloadXlsx" class="download">📎 Download XLSX (lokal)</button>
+        </div>
+
+        <div class="controls">
+          <div class="left-group">
+            <button type="submit" class="primary">📨 Send indberetning</button>
+            <button type="button" id="clearAll" class="removeBtn">🗑️ Ryd lokal gem</button>
+          </div>
+          <div class="right-group">
+            <button type="button" id="downloadXlsx" class="download">📎 Download XLSX (lokal)</button>
+          </div>
         </div>
       </form>
     </div>
@@ -465,11 +541,11 @@
       supabaseDownloadBtn.className = 'download';
       supabaseDownloadBtn.style.marginLeft = '0px';
       supabaseDownloadBtn.addEventListener('click', downloadFromSupabase);
-      document.querySelector('.controls').appendChild(supabaseDownloadBtn);
+      document.querySelector('.right-group').appendChild(supabaseDownloadBtn);
     });
 
     (function () {
-      const STORAGE_KEY = 'forms_responses_v7_ux';
+      const STORAGE_KEY = 'forms_responses_v8_layout';
       let saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
       const darisList = document.getElementById('darisList');
@@ -495,7 +571,7 @@
 
       function renderSaved() {
         resultsDiv.innerHTML = '';
-        if (!saved.length) { resultsDiv.innerHTML = '<div style="background:#fff; border-radius:24px; padding:28px; text-align:center; color:#5f7f9e;">📭 Ingen indberetninger endnu. Udfyld formularen og tryk "Send".</div>'; return; }
+        if (!saved.length) { resultsDiv.innerHTML = '<div style="background:#fff; border-radius:28px; padding:32px; text-align:center; color:#5f7f9e;">📭 Ingen indberetninger endnu. Udfyld formularen og tryk "Send".</div>'; return; }
         saved.forEach((rec, idx) => {
           const box = document.createElement('div'); box.className = 'entry';
           const header = document.createElement('div');
@@ -572,8 +648,10 @@
         const guestRow = document.createElement('div'); guestRow.className = 'guestRow';
         const top = document.createElement('div'); top.className = 'guestTop';
         const lbl = document.createElement('label'); lbl.className = 'smallLabel'; lbl.textContent = '🧑 Navn:';
-        const input = document.createElement('input'); input.type = 'text'; input.placeholder = 'Gæstens fulde navn'; input.style.flex = '1'; input.value = initial.name || '';
-        const statusWrap = document.createElement('div'); statusWrap.className = 'guestControls';
+        const input = document.createElement('input'); input.type = 'text'; input.placeholder = 'Fulde navn (én person)'; input.style.flex = '1'; input.value = initial.name || '';
+        const hint = document.createElement('div'); hint.className = 'guest-name-hint'; hint.innerHTML = 'ℹ️ Kun én gæst pr. felt – tilføj en ny gæst med knappen nedenfor.';
+
+        const statusWrap = document.createElement('div'); statusWrap.className = 'guest-controls';
         const btnAnkom = document.createElement('button'); btnAnkom.type = 'button'; btnAnkom.className = 'btnStatus'; btnAnkom.textContent = '✅ Ankom';
         const btnIkke = document.createElement('button'); btnIkke.type = 'button'; btnIkke.className = 'btnStatus'; btnIkke.textContent = '❌ Ankom-ikke';
         let arrived = typeof initial.arrived === 'boolean' ? initial.arrived : null;
@@ -594,6 +672,12 @@
         const removeGuest = document.createElement('button'); removeGuest.type = 'button'; removeGuest.className = 'removeBtn'; removeGuest.textContent = '❌ Fjern gæst';
         removeGuest.addEventListener('click', () => guestRow.remove());
         top.appendChild(lbl); top.appendChild(input); top.appendChild(statusWrap); top.appendChild(removeGuest);
+
+        // Insert hint under the name input
+        const nameContainer = document.createElement('div'); nameContainer.style.width = '100%';
+        nameContainer.appendChild(top);
+        nameContainer.appendChild(hint);
+        guestRow.appendChild(nameContainer);
 
         const halaqaRow = document.createElement('div'); halaqaRow.style.display = 'none'; halaqaRow.style.marginTop = '12px'; halaqaRow.style.gap = '16px'; halaqaRow.style.alignItems = 'center'; halaqaRow.style.flexWrap = 'wrap';
         const hLabel = document.createElement('label'); hLabel.className = 'small'; hLabel.textContent = '📖 Interesse i halaqa:';
@@ -632,7 +716,6 @@
         if (initial.impression === 'negativ') impNo.checked = true;
         updateStatusUI();
 
-        guestRow.appendChild(top);
         guestRow.appendChild(halaqaRow);
         guestRow.appendChild(detailRow);
         guestRow.appendChild(topicsBlock);
@@ -676,18 +759,22 @@
 
         const reasonSection = document.createElement('div'); reasonSection.className = 'reasonBox'; reasonSection.style.display = 'none';
         reasonSection.innerHTML = `
-      <div style="margin-bottom:6px;"><strong>⚠️ Årsag(er) til 0 iftarat (påkrævet)</strong></div>
-      <label><input type="checkbox" value="manglende økonomi"> 💸 Manglende økonomi</label>
-      <label><input type="checkbox" value="umoden"> 🧩 Umoden</label>
-      <label><input type="checkbox" value="social udfordret"> 🤝 Social udfordret</label>
-      <label>✏️ Andet: <input type="text" placeholder="Skriv anden årsag"></label>
-    `;
+          <div style="margin-bottom:8px;"><strong>⚠️ Årsag(er) til 0 iftarat (påkrævet)</strong></div>
+          <label><input type="checkbox" value="manglende økonomi"> 💸 Manglende økonomi</label>
+          <label><input type="checkbox" value="umoden"> 🧩 Umoden</label>
+          <label><input type="checkbox" value="social udfordret"> 🤝 Social udfordret</label>
+          <label>✏️ Andet: <input type="text" placeholder="Skriv anden årsag"></label>
+        `;
 
         const guestsContainer = document.createElement('div'); guestsContainer.style.marginTop = '20px';
-        const addGuestBtn = document.createElement('button'); addGuestBtn.type = 'button'; addGuestBtn.className = 'addBtn'; addGuestBtn.innerHTML = '👥 + Tilføj gæst';
-        addGuestBtn.addEventListener('click', () => { const gRow = createGuestRow(); guestsContainer.appendChild(gRow); });
-        guestsContainer.appendChild(addGuestBtn);
+        // Opret tilføj-knap som sidste element
+        const addGuestBtn = document.createElement('button'); addGuestBtn.type = 'button'; addGuestBtn.className = 'addBtn'; addGuestBtn.innerHTML = '➕ Tilføj gæst';
+        addGuestBtn.addEventListener('click', () => {
+          const gRow = createGuestRow();
+          guestsContainer.insertBefore(gRow, addGuestBtn);
+        });
 
+        // Tilføj eksisterende gæster før knappen
         if (Array.isArray(dInit.guests) && dInit.guests.length) {
           dInit.guests.forEach(g => {
             const gRow = createGuestRow(g);
@@ -695,6 +782,7 @@
             if (typeof g.arrived === 'boolean' && gRow.setArrived) gRow.setArrived(g.arrived);
           });
         }
+        guestsContainer.appendChild(addGuestBtn);
 
         function evaluateReasonVisibility() { const val = parseInt(iftarInput.value, 10); reasonSection.style.display = (!isNaN(val) && val === 0) ? 'block' : 'none'; }
         iftarInput.addEventListener('input', evaluateReasonVisibility);
