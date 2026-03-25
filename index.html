@@ -10,8 +10,8 @@
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
     window.supabase = createClient(
-      'https://nnqycdwvhgnltzjyycmp.supabase.co',          // ← ÆNDR til dit URL
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ucXljZHd2aGdubHR6anl5Y21wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMjU1NjgsImV4cCI6MjA4NjkwMTU2OH0.elueq0ucTlH_7x3rxnTe6zQUAIwFquc_dhN_mPdykKU'           // ← ÆNDR til din anon key
+      'xx',          // ← ÆNDR til dit URL
+      'xx'           // ← ÆNDR til din anon key
     );
     console.log('Supabase klient initialiseret');
   </script>
@@ -39,7 +39,6 @@
       margin: 0 auto;
     }
 
-    /* Kort / panel-stil */
     .form-card {
       background: #ffffff;
       border-radius: 32px;
@@ -77,7 +76,6 @@
       gap: 8px;
     }
 
-    /* form labels & inputs */
     .field-group {
       margin-bottom: 28px;
     }
@@ -112,7 +110,6 @@
       box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.2);
     }
 
-    /* knapunivers – kreative gradients og placering */
     button {
       font-family: inherit;
       font-weight: 600;
@@ -142,7 +139,6 @@
       transform: translateY(1px);
     }
 
-    /* Primær knap (send) */
     .primary {
       background: linear-gradient(105deg, #1f6feb 0%, #3b82f6 100%);
       color: white;
@@ -154,20 +150,17 @@
       background: linear-gradient(105deg, #0f5fd9 0%, #2563eb 100%);
     }
 
-    /* Tilføj-knap – fælles stil for daris og gæst */
     .addBtn {
       background: linear-gradient(105deg, #2b8a3e 0%, #40c057 100%);
       color: white;
       border: none;
       box-shadow: 0 4px 10px rgba(43, 138, 62, 0.3);
-      font-weight: 600;
     }
 
     .addBtn:hover {
       background: linear-gradient(105deg, #1e7a34 0%, #2f9e44 100%);
     }
 
-    /* Fjern-knap – rød gradient */
     .removeBtn {
       background: linear-gradient(105deg, #f97316 0%, #ef4444 100%);
       color: white;
@@ -179,7 +172,6 @@
       background: linear-gradient(105deg, #ea580c 0%, #dc2626 100%);
     }
 
-    /* Download knap */
     .download {
       background: linear-gradient(105deg, #6b5cff 0%, #8b5cf6 100%);
       color: white;
@@ -190,7 +182,6 @@
       background: linear-gradient(105deg, #5a4ce0 0%, #7c3aed 100%);
     }
 
-    /* Controls container – nederste handlinger */
     .controls {
       display: flex;
       flex-wrap: wrap;
@@ -226,7 +217,6 @@
       }
     }
 
-    /* Daris overskrift */
     .daris-section-header {
       display: flex;
       justify-content: space-between;
@@ -244,7 +234,6 @@
       gap: 8px;
     }
 
-    /* Knap til at tilføje daris – placeret nederst i sektionen */
     .add-daris-bottom {
       margin-top: 20px;
       text-align: right;
@@ -255,14 +244,12 @@
       padding: 12px 28px;
     }
 
-    /* DARIS bokse */
     .darisBox {
       background: #ffffff;
       border-radius: 28px;
       margin-top: 24px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       border: 1px solid #eef2f8;
-      transition: all 0.2s;
     }
 
     .darisHeader {
@@ -316,7 +303,6 @@
       border-radius: 0 0 28px 28px;
     }
 
-    /* rækker */
     .row {
       display: flex;
       gap: 20px;
@@ -335,7 +321,6 @@
       flex: 1;
     }
 
-    /* gæstebokse – med tydelig besked om én gæst */
     .guestRow {
       background: #ffffff;
       border-radius: 24px;
@@ -343,7 +328,6 @@
       margin-top: 16px;
       border: 1px solid #e2edf7;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-      transition: all 0.1s;
     }
 
     .guestTop {
@@ -393,19 +377,27 @@
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .detailRow {
-      margin: 16px 0 0 0;
-      width: 100%;
+      flex-wrap: wrap;
+      line-height: 1.4;
     }
 
     .topicBox {
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 16px;
-      margin: 16px 0;
-      border: 1px solid #e9edf2;
+      width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .topicBox .topics-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+    }  
+
+    .topicBox .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
     }
 
     .inline {
@@ -415,8 +407,56 @@
       background: #f8fafc;
       padding: 6px 14px;
       border-radius: 40px;
-      margin: 6px 10px 6px 0;
+      max-width: 100%;
+      white-space: normal;
+      word-break: break-word;
+      flex-wrap: wrap;
+      box-sizing: border-box;
     }
+
+    .inline input[type="text"] {
+      min-width: 0;
+      flex: 1;
+      width: auto;
+      max-width: 100%;
+    }
+
+    /* Fix for emne-boksen på mobil – "Andet" feltet skal på ny linje */
+    @media (max-width: 680px) {
+      .topicBox .topics-grid {
+        grid-template-columns: 1fr;
+      }
+      .inline {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background: #f8fafc;
+        border-radius: 40px;
+        padding: 8px 14px;
+        gap: 6px;
+      }
+      .inline input[type="checkbox"] {
+        margin-right: 0;
+      }
+      .inline input[type="text"] {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 4px;
+      }
+      /* Sørg for at hjælpeteksten ikke får et unaturligt linjeskift efter "personen" */
+      .guest-name-hint {
+        font-size: 0.7rem;
+        line-height: 1.3;
+        white-space: normal;
+        word-break: keep-all;
+      }
+    }
+
+
+    .topicBox {
+    overflow-x: hidden;
+  }
 
     .reasonBox {
       background: #fff8e7;
@@ -433,7 +473,6 @@
       font-weight: 500;
     }
 
-    /* indsamlede svar */
     .entry {
       background: #ffffff;
       border-radius: 28px;
@@ -454,6 +493,11 @@
       border-radius: 20px;
     }
 
+    .red-bold {
+      color: #dc2626;
+      font-weight: 700;
+    }
+
     @media (max-width: 680px) {
       .form-card {
         padding: 1.2rem;
@@ -469,11 +513,6 @@
         align-items: stretch;
       }
 
-      .inline {
-        display: flex;
-        width: 100%;
-      }
-
       .guest-controls {
         justify-content: space-between;
       }
@@ -486,6 +525,30 @@
       .add-daris-bottom {
         text-align: center;
       }
+
+      .guest-name-hint {
+        font-size: 0.7rem;
+      }
+
+            /* Fix for "Andet" input overflow on mobile */
+      @media (max-width: 680px) {
+        .inline input[type="text"] {
+          min-width: 0 !important;      /* override inline min-width: 120px */
+          width: 100% !important;
+          max-width: 100% !important;
+          margin-left: 0 !important;
+        }
+      }
+
+      /* Fix for hint text to avoid unnatural line break after "personen" */
+      .guest-name-hint {
+        display: block;                 /* change from flex to block */
+        flex-wrap: unset;
+        gap: 0;
+      }
+      .guest-name-hint span.red-bold {
+        display: inline;               /* ensure the red "ikke" stays inline */
+      }
     }
   </style>
 </head>
@@ -494,7 +557,7 @@
   <div class="main-container">
     <div class="form-card">
       <h1>📋 Mushrif · Daris · Gæster</h1>
-      <div class="subhead">✅ Udfyld oplysninger nedenfor — klik på daris-bokse for at udfolde / skjule detaljer</div>
+      <div class="subhead">✅ Udfyld oplysninger nedenfor — klik på daris-bokse for at udfolde/folde ind</div>
 
       <form id="form">
         <div class="field-group">
@@ -502,13 +565,11 @@
           <input id="mushrif" type="text" placeholder="Skriv mushrif-navn her" required>
         </div>
 
-        <!-- Daris sektion med overskrift -->
         <div class="daris-section-header">
-          <h3>👥 Daris-liste <span class="smallGray">(klik på boks for at udfolde)</span></h3>
+          <h3>👥 Daris-liste <span class="smallGray">(klik på boks for at udfolde/folde ind)</span></h3>
         </div>
         <div id="darisList"></div>
 
-        <!-- Tilføj daris knap – placeret nederst i Daris-sektionen -->
         <div class="add-daris-bottom">
           <button type="button" id="addDaris" class="addBtn">➕ Tilføj daris</button>
         </div>
@@ -545,7 +606,7 @@
     });
 
     (function () {
-      const STORAGE_KEY = 'forms_responses_v8_layout';
+      const STORAGE_KEY = 'forms_responses_v16_final';
       let saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
       const darisList = document.getElementById('darisList');
@@ -569,6 +630,34 @@
       function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); }
       function escapeHtml(s) { return String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
+      function isValidNamePart(value) {
+        if (value === '') return true;
+        const regex = /^[a-zA-ZæøåÆØÅ\s-]+$/;
+        if (!regex.test(value)) return false;
+        const wordCount = value.trim().split(/\s+/).length;
+        return wordCount <= 3;
+      }
+
+      function setupNameValidation(inputElement, fieldName) {
+        let lastValid = inputElement.value;
+        inputElement.addEventListener('input', function () {
+          const newValue = this.value;
+          if (newValue === '') {
+            lastValid = '';
+            return;
+          }
+          if (!isValidNamePart(newValue)) {
+            alert(`⚠️ Ugyldigt tegn i "${fieldName}".\nKun bogstaver, mellemrum og bindestreg tilladt. Max 3 ord.`);
+            this.value = lastValid;
+          } else {
+            lastValid = this.value;
+          }
+        });
+      }
+
+      const mushrefInput = document.getElementById('mushrif');
+      setupNameValidation(mushrefInput, 'Mushrif');
+
       function renderSaved() {
         resultsDiv.innerHTML = '';
         if (!saved.length) { resultsDiv.innerHTML = '<div style="background:#fff; border-radius:28px; padding:32px; text-align:center; color:#5f7f9e;">📭 Ingen indberetninger endnu. Udfyld formularen og tryk "Send".</div>'; return; }
@@ -590,7 +679,7 @@
                 d.guests.forEach(g => {
                   const li = document.createElement('li');
                   const topics = (g.topics && g.topics.length) ? g.topics.join('; ') : '';
-                  li.innerHTML = `<strong>🧑‍🤝‍🧑 Gæst:</strong> ${escapeHtml(g.name)} — <strong>Ankom:</strong> ${g.arrived ? '✅ ja' : '❌ nej'} — <strong>Halaqa:</strong> ${g.halaqa || '—'} — <strong>Uddybning:</strong> ${escapeHtml(g.halaqaDetail || '—')} — <strong>Emner:</strong> ${escapeHtml(topics)} — <strong>Indtryk:</strong> ${escapeHtml(g.impression || '—')} ${g.feedback ? ' — Feedback: ' + escapeHtml(g.feedback) : ''}`;
+                  li.innerHTML = `<strong>🧑‍🤝‍🧑 Gæst:</strong> ${escapeHtml(g.name)} — <strong>Ankom:</strong> ${g.arrived ? '✅ ja' : '❌ nej'} — <strong>Interesse i halaqa:</strong> ${g.interestInHalaqa === 'ja' ? 'Ja' : (g.interestInHalaqa === 'nej' ? 'Nej' : '')} ${g.halaqaDetail ? '— Uddybning: ' + escapeHtml(g.halaqaDetail) : ''} — <strong>Emner:</strong> ${escapeHtml(topics)} — <strong>Indtryk:</strong> ${escapeHtml(g.impression || '—')} ${g.feedback ? ' — Feedback: ' + escapeHtml(g.feedback) : ''}`;
                   ul.appendChild(li);
                 });
                 dDiv.appendChild(ul);
@@ -607,7 +696,7 @@
 
       function createTopicsBlock(initial = []) {
         const wrapper = document.createElement('div'); wrapper.className = 'topicBox';
-        const row = document.createElement('div'); row.style.display = 'flex'; row.style.flexWrap = 'wrap';
+        const grid = document.createElement('div'); grid.className = 'topics-grid';
         TOPICS.forEach(opt => {
           const span = document.createElement('label'); span.className = 'inline';
           const chk = document.createElement('input'); chk.type = 'checkbox'; chk.value = opt.val;
@@ -622,11 +711,12 @@
             chk.addEventListener('change', () => txt.disabled = !chk.checked);
             span.appendChild(txt);
           }
-          row.appendChild(span);
+          grid.appendChild(span);
         });
-        wrapper.appendChild(row);
+        wrapper.appendChild(grid);
         return wrapper;
       }
+
       function readTopicsBlock(wrapper) {
         if (!wrapper) return [];
         const checks = Array.from(wrapper.querySelectorAll('input[type="checkbox"]'));
@@ -647,58 +737,51 @@
       function createGuestRow(initial = {}) {
         const guestRow = document.createElement('div'); guestRow.className = 'guestRow';
         const top = document.createElement('div'); top.className = 'guestTop';
-        const lbl = document.createElement('label'); lbl.className = 'smallLabel'; lbl.textContent = '🧑 Navn:';
+        const lbl = document.createElement('label'); lbl.textContent = '🧑 Navn:';
         const input = document.createElement('input'); input.type = 'text'; input.placeholder = 'Fulde navn (én person)'; input.style.flex = '1'; input.value = initial.name || '';
         const hint = document.createElement('div'); hint.className = 'guest-name-hint'; hint.innerHTML = 'ℹ️ Kun én gæst pr. felt – tilføj en ny gæst med knappen nedenfor.';
+        setupNameValidation(input, 'Gæst');
 
         const statusWrap = document.createElement('div'); statusWrap.className = 'guest-controls';
         const btnAnkom = document.createElement('button'); btnAnkom.type = 'button'; btnAnkom.className = 'btnStatus'; btnAnkom.textContent = '✅ Ankom';
         const btnIkke = document.createElement('button'); btnIkke.type = 'button'; btnIkke.className = 'btnStatus'; btnIkke.textContent = '❌ Ankom-ikke';
         let arrived = typeof initial.arrived === 'boolean' ? initial.arrived : null;
-        function updateStatusUI() {
-          if (arrived === true) { btnAnkom.classList.add('btnActive'); btnIkke.classList.remove('btnActive'); }
-          else if (arrived === false) { btnIkke.classList.add('btnActive'); btnAnkom.classList.remove('btnActive'); }
-          else { btnAnkom.classList.remove('btnActive'); btnIkke.classList.remove('btnActive'); }
-          const show = arrived === true;
-          halaqaRow.style.display = show ? 'flex' : 'none';
-          topicsBlock.style.display = show ? 'block' : 'none';
-          impressionRow.style.display = show ? 'flex' : 'none';
-          feedbackArea.style.display = show ? 'block' : 'none';
-          detailRow.style.display = show ? 'flex' : 'none';
-        }
-        btnAnkom.addEventListener('click', () => { arrived = true; updateStatusUI(); });
-        btnIkke.addEventListener('click', () => { arrived = false; updateStatusUI(); });
-        statusWrap.appendChild(btnAnkom); statusWrap.appendChild(btnIkke);
-        const removeGuest = document.createElement('button'); removeGuest.type = 'button'; removeGuest.className = 'removeBtn'; removeGuest.textContent = '❌ Fjern gæst';
-        removeGuest.addEventListener('click', () => guestRow.remove());
-        top.appendChild(lbl); top.appendChild(input); top.appendChild(statusWrap); top.appendChild(removeGuest);
 
-        // Insert hint under the name input
-        const nameContainer = document.createElement('div'); nameContainer.style.width = '100%';
-        nameContainer.appendChild(top);
-        nameContainer.appendChild(hint);
-        guestRow.appendChild(nameContainer);
+        const halaqaSection = document.createElement('div'); halaqaSection.style.marginTop = '12px'; halaqaSection.style.display = 'none';
+        const topicsBlock = createTopicsBlock(initial.topics || []); topicsBlock.style.display = 'none';
+        const impressionRow = document.createElement('div'); impressionRow.style.marginTop = '12px'; impressionRow.style.display = 'none'; impressionRow.style.gap = '20px'; impressionRow.style.alignItems = 'center'; impressionRow.style.flexWrap = 'wrap';
+        const feedbackArea = document.createElement('textarea'); feedbackArea.placeholder = '💬 Feedback / forbedringsforslag (valgfri)'; feedbackArea.value = initial.feedback || ''; feedbackArea.rows = 2; feedbackArea.style.display = 'none';
 
-        const halaqaRow = document.createElement('div'); halaqaRow.style.display = 'none'; halaqaRow.style.marginTop = '12px'; halaqaRow.style.gap = '16px'; halaqaRow.style.alignItems = 'center'; halaqaRow.style.flexWrap = 'wrap';
+        const halaqaRow = document.createElement('div'); halaqaRow.style.display = 'flex'; halaqaRow.style.gap = '16px'; halaqaRow.style.alignItems = 'center'; halaqaRow.style.flexWrap = 'wrap';
         const hLabel = document.createElement('label'); hLabel.className = 'small'; hLabel.textContent = '📖 Interesse i halaqa:';
-        const hamount = document.createElement('div'); hamount.style.display = 'flex'; hamount.style.gap = '16px';
+        const halaqaGroup = document.createElement('div'); halaqaGroup.style.display = 'flex'; halaqaGroup.style.gap = '16px';
         const radioYes = document.createElement('input'); radioYes.type = 'radio'; radioYes.name = 'halaqa_' + Math.random().toString(36).slice(2, 8); radioYes.value = 'ja';
         const lYes = document.createElement('label'); lYes.appendChild(radioYes); lYes.appendChild(document.createTextNode(' Ja '));
         const radioNo = document.createElement('input'); radioNo.type = 'radio'; radioNo.name = radioYes.name; radioNo.value = 'nej';
         const lNo = document.createElement('label'); lNo.appendChild(radioNo); lNo.appendChild(document.createTextNode(' Nej '));
-        hamount.appendChild(lYes); hamount.appendChild(lNo);
-        halaqaRow.appendChild(hLabel); halaqaRow.appendChild(hamount);
+        halaqaGroup.appendChild(lYes); halaqaGroup.appendChild(lNo);
+        halaqaRow.appendChild(hLabel); halaqaRow.appendChild(halaqaGroup);
 
-        const detailRow = document.createElement('div'); detailRow.className = 'detailRow'; detailRow.style.display = 'none'; detailRow.style.flexDirection = 'column'; detailRow.style.gap = '6px';
+        const detailRow = document.createElement('div'); detailRow.style.marginTop = '8px'; detailRow.style.display = 'none';
         const detailLabel = document.createElement('label'); detailLabel.className = 'small'; detailLabel.textContent = '✍️ Uddybning (interesse / bemærkning):';
         const detailInput = document.createElement('input'); detailInput.type = 'text'; detailInput.placeholder = 'Beskriv nærmere...'; detailInput.style.width = '100%';
         detailInput.value = initial.halaqaDetail || '';
         detailRow.appendChild(detailLabel); detailRow.appendChild(detailInput);
 
-        const topicsBlock = createTopicsBlock(initial.topics || []);
-        topicsBlock.style.display = 'none';
+        const halaqaHint = document.createElement('div'); halaqaHint.className = 'guest-name-hint'; halaqaHint.style.marginTop = '6px';
+        halaqaHint.innerHTML = 'ℹ️ Dette spørgsmål gælder kun, hvis personen <span class="red-bold">ikke</span> er i halaqa.';
 
-        const impressionRow = document.createElement('div'); impressionRow.style.marginTop = '12px'; impressionRow.style.display = 'none'; impressionRow.style.gap = '20px'; impressionRow.style.alignItems = 'center'; impressionRow.style.flexWrap = 'wrap';
+        halaqaSection.appendChild(halaqaRow);
+        halaqaSection.appendChild(detailRow);
+        halaqaSection.appendChild(halaqaHint);
+
+        function updateDetailVisibility() {
+          detailRow.style.display = radioYes.checked ? 'block' : 'none';
+        }
+        radioYes.addEventListener('change', updateDetailVisibility);
+        radioNo.addEventListener('change', updateDetailVisibility);
+        updateDetailVisibility();
+
         const impLabel = document.createElement('span'); impLabel.className = 'smallLabel'; impLabel.textContent = '😊 Indtryk:';
         const impYes = document.createElement('input'); impYes.type = 'radio'; impYes.name = 'impression_' + Math.random().toString(36).slice(2, 8); impYes.value = 'positiv';
         const lblYes = document.createElement('label'); lblYes.appendChild(impYes); lblYes.appendChild(document.createTextNode(' Positivt '));
@@ -706,30 +789,49 @@
         const lblNo = document.createElement('label'); lblNo.appendChild(impNo); lblNo.appendChild(document.createTextNode(' Negativt '));
         impressionRow.appendChild(impLabel); impressionRow.appendChild(lblYes); impressionRow.appendChild(lblNo);
 
-        const feedbackArea = document.createElement('textarea'); feedbackArea.className = 'guestFeedback'; feedbackArea.placeholder = '💬 Feedback / forbedringsforslag (valgfri)'; feedbackArea.value = initial.feedback || '';
-        feedbackArea.style.display = 'none'; feedbackArea.rows = 2;
+        function updateStatusUI() {
+          if (arrived === true) { btnAnkom.classList.add('btnActive'); btnIkke.classList.remove('btnActive'); }
+          else if (arrived === false) { btnIkke.classList.add('btnActive'); btnAnkom.classList.remove('btnActive'); }
+          else { btnAnkom.classList.remove('btnActive'); btnIkke.classList.remove('btnActive'); }
+          const show = arrived === true;
+          halaqaSection.style.display = show ? 'block' : 'none';
+          topicsBlock.style.display = show ? 'block' : 'none';
+          impressionRow.style.display = show ? 'flex' : 'none';
+          feedbackArea.style.display = show ? 'block' : 'none';
+        }
 
-        if (initial.arrived === true || initial.arrived === false) arrived = initial.arrived;
-        if (initial.halaqa === 'ja') radioYes.checked = true;
-        if (initial.halaqa === 'nej') radioNo.checked = true;
-        if (initial.impression === 'positiv') impYes.checked = true;
-        if (initial.impression === 'negativ') impNo.checked = true;
-        updateStatusUI();
+        btnAnkom.addEventListener('click', () => { arrived = true; updateStatusUI(); });
+        btnIkke.addEventListener('click', () => { arrived = false; updateStatusUI(); });
+        statusWrap.appendChild(btnAnkom); statusWrap.appendChild(btnIkke);
+        const removeGuest = document.createElement('button'); removeGuest.type = 'button'; removeGuest.className = 'removeBtn'; removeGuest.textContent = '❌ Fjern gæst';
+        removeGuest.addEventListener('click', () => guestRow.remove());
 
-        guestRow.appendChild(halaqaRow);
-        guestRow.appendChild(detailRow);
+        top.appendChild(lbl); top.appendChild(input); top.appendChild(statusWrap); top.appendChild(removeGuest);
+        const nameContainer = document.createElement('div'); nameContainer.style.width = '100%';
+        nameContainer.appendChild(top);
+        nameContainer.appendChild(hint);
+        guestRow.appendChild(nameContainer);
+        guestRow.appendChild(halaqaSection);
         guestRow.appendChild(topicsBlock);
         guestRow.appendChild(impressionRow);
         guestRow.appendChild(feedbackArea);
 
+        if (initial.interestInHalaqa === 'ja') radioYes.checked = true;
+        if (initial.interestInHalaqa === 'nej') radioNo.checked = true;
+        if (initial.impression === 'positiv') impYes.checked = true;
+        if (initial.impression === 'negativ') impNo.checked = true;
+        detailInput.value = initial.halaqaDetail || '';
+        if (initial.arrived === true || initial.arrived === false) arrived = initial.arrived;
+        updateStatusUI();
+
         guestRow.getData = function () {
           const name = input.value.trim();
-          const halaqa = radioYes.checked ? 'ja' : (radioNo.checked ? 'nej' : '');
+          const interestInHalaqa = radioYes.checked ? 'ja' : (radioNo.checked ? 'nej' : '');
           const halaqaDetail = detailInput.value.trim();
           const topics = readTopicsBlock(topicsBlock);
           const impression = impYes.checked ? 'positiv' : (impNo.checked ? 'negativ' : '');
           const feedback = feedbackArea.value.trim();
-          return { name, arrived: arrived === true, halaqa, halaqaDetail, topics, impression, feedback };
+          return { name, arrived: arrived === true, interestInHalaqa, halaqaDetail, topics, impression, feedback };
         };
         guestRow.setArrived = function (val) { arrived = val; updateStatusUI(); };
         return guestRow;
@@ -748,7 +850,8 @@
         const content = document.createElement('div'); content.className = 'darisContent';
         const nameRow = document.createElement('div'); nameRow.className = 'row';
         const nameLabel = document.createElement('label'); nameLabel.textContent = '📛 Navn:';
-        const nameInput = document.createElement('input'); nameInput.type = 'text'; nameInput.placeholder = 'Daris (fx Abu Bakr)'; nameInput.value = dInit.name || ''; nameInput.style.flex = '1';
+        const nameInput = document.createElement('input'); nameInput.type = 'text'; nameInput.placeholder = 'Daris navn'; nameInput.value = dInit.name || ''; nameInput.style.flex = '1';
+        setupNameValidation(nameInput, 'Daris');
         nameRow.appendChild(nameLabel); nameRow.appendChild(nameInput);
 
         const iftarRow = document.createElement('div'); iftarRow.className = 'row';
@@ -767,14 +870,12 @@
         `;
 
         const guestsContainer = document.createElement('div'); guestsContainer.style.marginTop = '20px';
-        // Opret tilføj-knap som sidste element
         const addGuestBtn = document.createElement('button'); addGuestBtn.type = 'button'; addGuestBtn.className = 'addBtn'; addGuestBtn.innerHTML = '➕ Tilføj gæst';
         addGuestBtn.addEventListener('click', () => {
           const gRow = createGuestRow();
           guestsContainer.insertBefore(gRow, addGuestBtn);
         });
 
-        // Tilføj eksisterende gæster før knappen
         if (Array.isArray(dInit.guests) && dInit.guests.length) {
           dInit.guests.forEach(g => {
             const gRow = createGuestRow(g);
@@ -783,6 +884,21 @@
           });
         }
         guestsContainer.appendChild(addGuestBtn);
+
+        function updateGuestVisibility() {
+          const iftarVal = parseInt(iftarInput.value, 10);
+          const showGuests = !isNaN(iftarVal) && iftarVal > 0;
+          guestsContainer.style.display = showGuests ? 'block' : 'none';
+          if (showGuests) {
+            const existingGuests = guestsContainer.querySelectorAll('.guestRow').length;
+            if (existingGuests === 0) {
+              const gRow = createGuestRow();
+              guestsContainer.insertBefore(gRow, addGuestBtn);
+            }
+          }
+        }
+        iftarInput.addEventListener('input', updateGuestVisibility);
+        updateGuestVisibility();
 
         function evaluateReasonVisibility() { const val = parseInt(iftarInput.value, 10); reasonSection.style.display = (!isNaN(val) && val === 0) ? 'block' : 'none'; }
         iftarInput.addEventListener('input', evaluateReasonVisibility);
@@ -812,7 +928,7 @@
             Array.from(reasonSection.querySelectorAll('input[type="checkbox"]')).forEach(chk => { if (chk.checked) reasons.push(chk.value); });
             const otherTxt = reasonSection.querySelector('input[type="text"]'); if (otherTxt && otherTxt.value.trim()) reasons.push(otherTxt.value.trim());
             const guestEls = Array.from(guestsContainer.querySelectorAll('.guestRow'));
-            const guests = guestEls.map(ge => ge.getData ? ge.getData() : { name: '', arrived: false, halaqa: '', halaqaDetail: '', topics: [], impression: '', feedback: '' }).filter(g => g.name && g.name.length > 0);
+            const guests = guestEls.map(ge => ge.getData ? ge.getData() : { name: '', arrived: false, interestInHalaqa: '', halaqaDetail: '', topics: [], impression: '', feedback: '' }).filter(g => g.name && g.name.length > 0);
             return { name, iftarat: isNaN(iftar) ? 0 : iftar, reasons, guests };
           }
         };
@@ -824,18 +940,31 @@
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
         const mushrif = document.getElementById('mushrif').value.trim();
-        if (!mushrif) { alert('Indtast venligst navn på mushrif (obligatorisk).'); document.getElementById('mushrif').focus(); return; }
+        if (!isValidNamePart(mushrif) || mushrif === '') {
+          alert('⚠️ Ugyldigt navn i feltet "Mushrif".\nNavnet må kun indeholde bogstaver, mellemrum og bindestreg, og højst 3 ord. Feltet må ikke være tomt.');
+          document.getElementById('mushrif').focus();
+          return;
+        }
 
         const darisBoxes = Array.from(darisList.querySelectorAll('.darisBox'));
         const darisArr = [];
         let validationFailed = false;
         let firstInvalid = null;
 
-        darisBoxes.forEach(box => {
+        for (let i = 0; i < darisBoxes.length; i++) {
+          const box = darisBoxes[i];
           const nameInput = box.querySelector('input[type="text"]');
           const darisName = nameInput ? nameInput.value.trim() : '';
-          if (!darisName) return;
+          if (!darisName) continue;
+
+          if (!isValidNamePart(darisName)) {
+            alert(`⚠️ Ugyldigt navn i feltet "Daris ${i + 1}".\nNavnet må kun indeholde bogstaver, mellemrum og bindestreg, og højst 3 ord.`);
+            nameInput.focus();
+            return;
+          }
+
           const iftarInput = box.querySelector('input[type="number"]');
           const iftarVal = iftarInput && iftarInput.value.trim() !== '' ? parseInt(iftarInput.value.trim(), 10) : 0;
           const reasonSection = box.querySelector('.reasonBox');
@@ -849,10 +978,24 @@
             if (reasonSection) reasonSection.classList.add('error');
             if (!firstInvalid) firstInvalid = reasonSection || box;
           }
+
           const guestEls = Array.from(box.querySelectorAll('.guestRow'));
-          const guests = guestEls.map(ge => ge.getData ? ge.getData() : { name: '', arrived: false, halaqa: '', halaqaDetail: '', topics: [], impression: '', feedback: '' }).filter(g => g.name && g.name.length > 0);
+          const guests = [];
+          for (let j = 0; j < guestEls.length; j++) {
+            const ge = guestEls[j];
+            const guestData = ge.getData ? ge.getData() : null;
+            if (guestData && guestData.name) {
+              if (!isValidNamePart(guestData.name)) {
+                alert(`⚠️ Ugyldigt navn i feltet "Gæst ${j + 1}" under Daris ${darisName}.\nNavnet må kun indeholde bogstaver, mellemrum og bindestreg, og højst 3 ord.`);
+                const guestNameInput = ge.querySelector('input[type="text"]');
+                if (guestNameInput) guestNameInput.focus();
+                return;
+              }
+              guests.push(guestData);
+            }
+          }
           darisArr.push({ name: darisName, iftarat: isNaN(iftarVal) ? 0 : iftarVal, reasons, guests });
-        });
+        }
 
         if (validationFailed) { alert('⚠️ Mindst én daris har 0 iftarat – angiv mindst én årsag i det markerede felt.'); if (firstInvalid && firstInvalid.scrollIntoView) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
 
@@ -879,8 +1022,10 @@
               d.guests.forEach(g => {
                 flat.push({
                   Mushrif: rec.mushrif, Daris: d.name, 'Antal iftarat': d.iftarat, Årsager: reasonsStr,
-                  Gæst: g.name || '', Ankom: g.arrived ? 'Ja' : 'Nej', 'Interesse i halaqa': g.halaqa || '',
-                  Uddybning: g.halaqaDetail || '', Emner: Array.isArray(g.topics) ? g.topics.join('; ') : '',
+                  Gæst: g.name || '', Ankom: g.arrived ? 'Ja' : 'Nej',
+                  'Interesse i halaqa': g.interestInHalaqa === 'ja' ? 'Ja' : (g.interestInHalaqa === 'nej' ? 'Nej' : ''),
+                  Uddybning: g.halaqaDetail || '',
+                  Emner: Array.isArray(g.topics) ? g.topics.join('; ') : '',
                   Indtryk: g.impression || '', Feedback: g.feedback || '', Dato: rec.date
                 });
               });
