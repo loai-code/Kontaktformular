@@ -679,7 +679,7 @@
                 d.guests.forEach(g => {
                   const li = document.createElement('li');
                   const topics = (g.topics && g.topics.length) ? g.topics.join('; ') : '';
-                  li.innerHTML = `<strong>🧑‍🤝‍🧑 Gæst:</strong> ${escapeHtml(g.name)} — <strong>Ankom:</strong> ${g.arrived ? '✅ ja' : '❌ nej'} — <strong>Interesse i halaqa:</strong> ${g.interestInHalaqa === 'ja' ? 'Ja' : (g.interestInHalaqa === 'nej' ? 'Nej' : '')} ${g.halaqaDetail ? '— Uddybning: ' + escapeHtml(g.halaqaDetail) : ''} — <strong>Emner:</strong> ${escapeHtml(topics)} — <strong>Indtryk:</strong> ${escapeHtml(g.impression || '—')} ${g.feedback ? ' — Feedback: ' + escapeHtml(g.feedback) : ''}`;
+                  li.innerHTML = `<strong>🧑‍🤝‍🧑 Gæst:</strong> ${escapeHtml(g.name)} — <strong>Ankom:</strong> ${g.arrived ? '✅ ja' : '❌ nej'} — <strong>Interesse i halaqa:</strong> ${g.halaqa === 'ja' ? 'Ja' : (g.halaqa === 'nej' ? 'Nej' : '')} ${g.halaqaDetail ? '— Uddybning: ' + escapeHtml(g.halaqaDetail) : ''} — <strong>Emner:</strong> ${escapeHtml(topics)} — <strong>Indtryk:</strong> ${escapeHtml(g.impression || '—')} ${g.feedback ? ' — Feedback: ' + escapeHtml(g.feedback) : ''}`;
                   ul.appendChild(li);
                 });
                 dDiv.appendChild(ul);
@@ -816,8 +816,8 @@
         guestRow.appendChild(impressionRow);
         guestRow.appendChild(feedbackArea);
 
-        if (initial.interestInHalaqa === 'ja') radioYes.checked = true;
-        if (initial.interestInHalaqa === 'nej') radioNo.checked = true;
+        if (initial.halaqa === 'ja') radioYes.checked = true;
+        if (initial.halaqa === 'nej') radioNo.checked = true;
         if (initial.impression === 'positiv') impYes.checked = true;
         if (initial.impression === 'negativ') impNo.checked = true;
         detailInput.value = initial.halaqaDetail || '';
@@ -826,12 +826,12 @@
 
         guestRow.getData = function () {
           const name = input.value.trim();
-          const interestInHalaqa = radioYes.checked ? 'ja' : (radioNo.checked ? 'nej' : '');
+          const halaqa = radioYes.checked ? 'ja' : (radioNo.checked ? 'nej' : '');
           const halaqaDetail = detailInput.value.trim();
           const topics = readTopicsBlock(topicsBlock);
           const impression = impYes.checked ? 'positiv' : (impNo.checked ? 'negativ' : '');
           const feedback = feedbackArea.value.trim();
-          return { name, arrived: arrived === true, interestInHalaqa, halaqaDetail, topics, impression, feedback };
+          return { name, arrived: arrived === true, halaqa, halaqaDetail, topics, impression, feedback };
         };
         guestRow.setArrived = function (val) { arrived = val; updateStatusUI(); };
         return guestRow;
@@ -928,7 +928,7 @@
             Array.from(reasonSection.querySelectorAll('input[type="checkbox"]')).forEach(chk => { if (chk.checked) reasons.push(chk.value); });
             const otherTxt = reasonSection.querySelector('input[type="text"]'); if (otherTxt && otherTxt.value.trim()) reasons.push(otherTxt.value.trim());
             const guestEls = Array.from(guestsContainer.querySelectorAll('.guestRow'));
-            const guests = guestEls.map(ge => ge.getData ? ge.getData() : { name: '', arrived: false, interestInHalaqa: '', halaqaDetail: '', topics: [], impression: '', feedback: '' }).filter(g => g.name && g.name.length > 0);
+            const guests = guestEls.map(ge => ge.getData ? ge.getData() : { name: '', arrived: false, halaqa: '', halaqaDetail: '', topics: [], impression: '', feedback: '' }).filter(g => g.name && g.name.length > 0);
             return { name, iftarat: isNaN(iftar) ? 0 : iftar, reasons, guests };
           }
         };
@@ -1023,7 +1023,7 @@
                 flat.push({
                   Mushrif: rec.mushrif, Daris: d.name, 'Antal iftarat': d.iftarat, Årsager: reasonsStr,
                   Gæst: g.name || '', Ankom: g.arrived ? 'Ja' : 'Nej',
-                  'Interesse i halaqa': g.interestInHalaqa === 'ja' ? 'Ja' : (g.interestInHalaqa === 'nej' ? 'Nej' : ''),
+                  'Interesse i halaqa': g.halaqa === 'ja' ? 'Ja' : (g.halaqa === 'nej' ? 'Nej' : ''),
                   Uddybning: g.halaqaDetail || '',
                   Emner: Array.isArray(g.topics) ? g.topics.join('; ') : '',
                   Indtryk: g.impression || '', Feedback: g.feedback || '', Dato: rec.date
